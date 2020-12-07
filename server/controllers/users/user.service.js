@@ -1,14 +1,11 @@
 const jwt = require('jsonwebtoken');
-
-// TODO: Move this to database
-const users = [{ id: 1, username: 'test', password: 'test', firstName: 'Test', lastName: 'User' }];
-
+const db = require("../../models");
 
 async function authenticate({ username, password }) {
-    const user = users.find(u => u.username === username && u.password === password);
-    if (user) {
+    const user = await db.user.findAll({ where: { email: username}})
+    if (user[0].dataValues && user[0].dataValues.password === password) {
         const token = jwt.sign({ sub: user.id }, process.env.JWT_KEY);
-        const { password, ...userWithoutPassword } = user;
+        const { password, ...userWithoutPassword } = user[0].dataValues;
         return {
             ...userWithoutPassword,
             token
