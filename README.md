@@ -3,7 +3,7 @@
 
 ## Starting App
 ```
-git clone https://github.com/vaughanpo/react-reserve
+git clone git@github.com:vaughan189/react-reserve.git
 ```
 **Client App**
 ```
