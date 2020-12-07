@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Switch, Route, Router, withRouter, Redirect } from 'react-router-dom';
+import { getUserDetails } from "../../utils";
+import { Navbar } from "../../components";
 import HomePage from '../HomePage/Home';
 import LoginPage from '../LoginPage/Login'
-import { Navbar } from "../../components";
-import { getUserDetails } from "../../utils";
 
 const Index = ({ history }: any) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -15,9 +15,9 @@ const Index = ({ history }: any) => {
         <Router history={history}>
             {isLoggedIn ? <Navbar /> : null}
             <Switch>
-                <Route exact path="/" render={() => (!isLoggedIn ? (<LoginPage />) : (<Redirect to="/home" />))} />
                 <Route exact path="/login" render={() => (!isLoggedIn ? (<LoginPage />) : (<Redirect to="/home" />))} />
                 <Route exact path="/home" render={() => (isLoggedIn ? (<HomePage />) : (<Redirect to="/login" />))} />
+                <Route exact path="/" render={() => (!isLoggedIn ? (<LoginPage />) : (<Redirect to="/home" />))} />
             </Switch>
         </Router>
     )

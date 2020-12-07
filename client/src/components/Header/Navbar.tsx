@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
+import ShopIcon from '@material-ui/icons/Shop';
 import Typography from '@material-ui/core/Typography';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
@@ -72,6 +73,7 @@ export default function Navbar() {
                         aria-label="open drawer" onClick={() => toggleSidemenu.current.toggleDrawer('left', true)}>
                         <MenuIcon />
                     </IconButton>
+                    <ShopIcon />
                     <Typography className={classes.title} variant="h6" noWrap>
                         React Reserve
                     </Typography>
@@ -90,7 +92,7 @@ export default function Navbar() {
                     </div>
                 </Toolbar>
             </AppBar>
-            <Sidenav ref={toggleSidemenu}/>
+            <Sidenav ref={toggleSidemenu} />
             {renderMobileMenu}
             {renderMenu}
         </div>
